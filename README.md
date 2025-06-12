@@ -1,4 +1,4 @@
-# envelop-popup
+# Envelop-Popup
 
 ## Project setup
 ```
@@ -17,3 +17,6 @@ yarn build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Credits
+This repo was modified from https://github.com/guguji5/envelop-popup.
