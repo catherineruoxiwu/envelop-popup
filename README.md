@@ -1,4 +1,7 @@
-# [Envelop-Popup](https://catherineruoxiwu.github.io/envelop-popup/)
+# [Envelop-Popup]
+
+## Deployment
+https://catherineruoxiwu.github.io/envelop-popup/
 
 ## Project setup
 ```
@@ -19,4 +22,4 @@ yarn build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Credits
-This repo was modified from https://github.com/guguji5/envelop-popup.
+This repo was forked from https://github.com/guguji5/envelop-popup.
