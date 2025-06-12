@@ -1,4 +1,4 @@
-# [Envelop-Popup]
+# Envelop-Popup
 
 ## Deployment
 https://catherineruoxiwu.github.io/envelop-popup/
