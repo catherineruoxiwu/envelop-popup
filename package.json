@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "postcss-nested": "2",
@@ -12,11 +13,13 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^4.5.0",
+    "gh-pages": "^6.3.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "homepage": "https://catherineruoxiwu.github.io/invitation-20250624"
 }

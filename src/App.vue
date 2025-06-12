@@ -1,128 +1,17 @@
 <template>
   <div id="app">
-    <div class="content">
-      <h3 class="title">信封特效：</h3>
-      <ol :class="{show: !showEnvelope}">
-        <li>点击"敬启"后高亮，并向上移动10px</li>
-        <li>整个信封向下平移100px</li>
-        <li>"敬启"消失，滴滴云logo消失</li>
-        <li>信封上半部沿Z轴向外旋转180度，同时z-index下降，信封正面慢慢向下</li>
-        <li>信封下半部分沿Z轴转动小幅度</li>
-        <li>信纸弹出，"随便看看"淡入</li>
-      </ol>
-      <br />
-      <a href="https://github.com/guguji5/envelop-popup">去Github看看</a>
-    </div>
-     <div class="shadow" v-if="showEnvelope" @click.self="showEnvelope = false">
-      <div class="envelop" :class="{'open': openedEnvelope}">
+    <div class="shadow" v-if="showEnvelope" @click.self="showEnvelope = false">
+      <div class="envelop" :class="{ open: openedEnvelope }">
         <div class="top">
           <div class="invitation"></div>
         </div>
         <div class="front"></div>
-        <div class="paper">
-          <div class="head-left">
-            <p class="title">尊敬的 guguji5 ，</p>
-            <p class="time">今天是您成为滴滴云用户的 <span class="hot">200</span> 天，感恩！</p>
-            <p class="desc">为答谢您一直以来的厚爱，我们诚挚的邀请您加入“<span class="hot">推广返利计划</span>”，期望您在享受滴滴云优质服务的同时，也将他们推广给更多有需要的企业和朋友们。同时，会将推广获得收益返利给长久以来一直支持我们的您。</p>
-            <p class="desc">此致，敬礼</p>
-          </div>
-          <div class="head-content">
-            <div class="head-content-item">
-              <div class="item-logo item-logo-envoy">
-                <img
-                  v-if="clueAnimation"
-                  class="item-logo-gold"
-                  :src="require(`./assets/gold.png`)">
-                <span class="title">'最高返利50%'</span>
-                <span  v-if="envoyAnimation" class="item-logo-center-shadow"></span>
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-down-active': envoyAnimation}"
-                  :src="require(`./assets/envoy-center.png`)">
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-up-active': envoyAnimation}"
-                  :src="require(`./assets/envoy-center-active.png`)">
-                <img class="item-logo-bottom" :src="require(`./assets/envoy-bottom.png`)">
-              </div>
-              <template>
-                <p class="item-desc">
-                  成为云使者，推荐用户消费，独享新用户30天内全订单返现，最高享受50%返利。
-                  <a href="">了解详情</a>
-                </p>
-                <button type="primary" class="submit-btn" @click="addAnimation('envoy')">成为云使者</button>
-              </template>
-            </div>
-            <div class="head-content-item">
-              <div class="item-logo item-logo-clue">
-                <img
-                  v-if="clueAnimation"
-                  class="item-logo-gold"
-                  :src="require(`./assets/gold.png`)">
-                <span class="title">{{clueAccount ? '长期返利' : '多重返利'}}</span>
-                <span v-if="clueAnimation" class="item-logo-center-shadow"></span>
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-down-active': clueAnimation}"
-                  :src="require(`./assets/clue-center.png`)">
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-up-active': clueAnimation}"
-                  :src="require(`./assets/clue-center-active.png`)">
-                <img class="item-logo-bottom" :src="require(`./assets/clue-bottom.png`)">
-              </div>
-              <template>
-                <p class="item-desc">
-                  提交您身边有企业上云或云计算服务需求的商机，一旦成单，您可以从该线索的支付订单中获得永久返佣。
-                  <a href="">了解详情</a>
-                </p>
-                <button type="primary" class="submit-btn" @click="addAnimation('clue')">提交企业线索</button>
-              </template>
-            </div>
-            <div class="head-content-item">
-              <div class="item-logo item-logo-ai">
-                <img
-                  v-if="aiAnimation"
-                  class="item-logo-gold"
-                  :src="require(`./assets/gold.png`)">
-                <span class="title">折扣/返利两不误</span>
-                <span v-if="aiAnimation" class="item-logo-center-shadow"></span>
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-down-active': aiAnimation}"
-                  :src="require(`./assets/ai-center.png`)">
-                <img
-                  class="item-logo-center"
-                  :class="{'item-logo-center-up-active': aiAnimation}"
-                  :src="require(`./assets/ai-center-active.png`)">
-                <img class="item-logo-bottom" :src="require(`./assets/ai-bottom.png`)">
-              </div>
-              <template >
-                <p class="item-tip">
-                  2020年9月26日加入AI大师
-                </p>
-                <div class="item-data">
-                  <div class="item">
-                    <p class="amount"><span>Lv.1 9</span>折</p>
-                    <p>当前等级</p>
-                  </div>
-                  <span class="split"></span>
-                  <div class="item">
-                    <p class="amount"><span>99</span>元</p>
-                    <p>累计返利</p>
-                  </div>
-                </div>
-                <button class="more-btn" @click="addAnimation('ai-master')">查看更多</button>
-              </template>
-            </div>
-          </div>
-        </div>
+        <div class="paper"></div>
         <div class="bottom">
           <div class="logo"></div>
         </div>
-        <div class="goon" @click="showEnvelope = false">随便看看</div>
         <div class="btn" @click="openEnvelop">
-          <img :src="require('./assets/seal-word.png')">
+          <img :src="require('./assets/seal-word.png')" />
         </div>
         <div class="left flower"></div>
         <div class="right flower"></div>
@@ -337,7 +226,6 @@ html, body{
       .logo{
         width: 99px;
         height: 33px;
-        background: url('./assets/envelop-logo.png') no-repeat;
         background-size: 99px 33px;
       }
       
@@ -680,4 +568,24 @@ html, body{
       }
     }
   }
+
+@media (max-width: 1000px) {
+  .shadow .envelop {
+    transform: translate(-50%, -50%) scale(0.6);
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform-origin: center center;
+  }
+}
+
+@media (max-width: 560px) {
+  .shadow .envelop {
+    transform: translate(-50%, -50%) scale(0.35);
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform-origin: center center;
+  }
+}
 </style>
